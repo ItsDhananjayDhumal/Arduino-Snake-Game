@@ -9,6 +9,7 @@
 #define MAX_LEN 128
 #define GIRTH 2 //   ### MUST BE A POWER OF 2 (including 1)
 #define SPEED 15 // speed of iteration. delay is SPEED * GIRTH
+#define TOLERENCE 20 // to make sure apple doesn't spawn on the edge of screen
 
 #define JOYSTICKX A0
 #define JOYSTICKY A1
@@ -49,8 +50,8 @@ void GAME_OVER() {
 }
 
 void RandomApple(){
-    a_xcor = (GIRTH * random((20/GIRTH), ((SCREEN_WIDTH - 20)/GIRTH)));
-    a_ycor = (GIRTH * random((20/GIRTH), ((SCREEN_HEIGHT - 20)/GIRTH)));
+    a_xcor = (GIRTH * random((TOLERENCE/GIRTH), ((SCREEN_WIDTH - TOLERENCE)/GIRTH)));
+    a_ycor = (GIRTH * random((TOLERENCE/GIRTH), ((SCREEN_HEIGHT - TOLERENCE)/GIRTH)));
 }
 
 void setup() {
@@ -106,7 +107,6 @@ void loop() {
     for (short i = 1; i < snake_len; i++) {
         if (x_cor[0] == x_cor[i] && y_cor[0] == y_cor[i]) {
             GAME_OVER();
-            // return;
         }
     }
 
