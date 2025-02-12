@@ -45,7 +45,7 @@ void GAME_OVER() {
     display.print("                                                  Score: ");
     display.print(score);
     display.display();
-    for(;;){}
+    for(;;){}  // stop game
 }
 
 void RandomApple(){
